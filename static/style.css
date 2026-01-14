@@ -1,0 +1,334 @@
+* {
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+body {
+    margin: 0;
+    background: linear-gradient(120deg, #eef2f7, #dbe6f3);
+}
+
+/* Center container */
+.container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Card */
+.card {
+    background: #ffffff;
+    padding: 35px;
+    width: 380px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.home-card {
+    width: 420px;
+}
+
+/* Headings */
+.card h1 {
+    margin-bottom: 10px;
+    color: #222;
+}
+
+.card h2 {
+    margin-bottom: 5px;
+}
+
+/* Subtitle text */
+.subtitle {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 25px;
+}
+
+/* Input fields */
+.card input {
+    width: 100%;
+    padding: 11px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    padding: 11px;
+    width: 100%;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.primary-btn {
+    background: #007bff;
+    color: white;
+    border: none;
+}
+
+.primary-btn:hover {
+    background: #0056b3;
+}
+
+.secondary-btn {
+    background: #e9ecef;
+    color: #333;
+    margin-top: 10px;
+}
+
+.secondary-btn:hover {
+    background: #d6d8db;
+}
+
+/* Button group */
+.button-group {
+    margin-top: 20px;
+}
+
+/* Bottom text */
+.bottom-text {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.bottom-text a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.bottom-text a:hover {
+    text-decoration: underline;
+}
+
+/* Flash popup center */
+#flash-wrapper {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}
+
+/* Flash message box */
+.flash {
+    min-width: 280px;
+    max-width: 380px;
+    padding: 14px 20px;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 15px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    animation: fadeIn 0.4s ease;
+}
+
+/* Success & error colors */
+.flash.success {
+    background-color: #28a745;
+}
+
+.flash.error {
+    background-color: #dc3545;
+}
+
+/* Fade animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+
+/* Navbar */
+.navbar {
+    background: #ffffff;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 20px;
+    color: #007bff;
+}
+
+.menu a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+}
+
+.menu a:hover {
+    color: #007bff;
+}
+
+/* Hero */
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.hero h1 {
+    font-size: 32px;
+}
+
+.hero p {
+    color: #555;
+    margin: 15px 0 30px;
+}
+
+/* Features */
+.features {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding-bottom: 60px;
+}
+
+.feature-card {
+    background: white;
+    padding: 25px;
+    width: 220px;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+    text-align: center;
+}
+#flash-wrapper {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}
+
+.flash {
+    min-width: 280px;
+    padding: 14px 20px;
+    border-radius: 8px;
+    font-size: 15px;
+    color: white;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
+.flash.success {
+    background: #28a745;
+}
+
+.flash.error {
+    background: #dc3545;
+}
+
+
+/* Dashboard layout */
+.dashboard-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+/* Dashboard cards */
+.dashboard-card {
+    padding: 30px;
+}
+
+/* Textarea styling */
+.dashboard-card textarea {
+    width: 100%;
+    padding: 10px;
+    min-height: 80px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+    resize: none;
+}
+
+/* Task item */
+.task-item {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+}
+
+.task-item p {
+    font-size: 14px;
+    color: #555;
+    margin-top: 5px;
+}
+
+/* Empty text */
+.empty-text {
+    color: #777;
+    font-size: 14px;
+}
+
+/* Welcome text */
+.welcome {
+    margin-right: 15px;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .dashboard-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Task item layout */
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Delete button */
+.delete-btn {
+    color: #dc3545;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.delete-btn:hover {
+    text-decoration: underline;
+}
+
+/* Status badges */
+.status {
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.status.pending {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.status.completed {
+    background-color: #d4edda;
+    color: #155724;
+}

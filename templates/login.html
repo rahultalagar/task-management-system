@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <h2>Welcome Back</h2>
+        <p class="subtitle">Login to manage your tasks</p>
+
+        <form method="POST">
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit" class="btn primary-btn">Login</button>
+        </form>
+
+        <p class="bottom-text">
+    Don’t have an account?
+    <a href="/register">Sign Up</a>
+</p>
+
+<a href="/" class="btn secondary-btn" style="margin-top:15px;">⬅ Back to Home</a>
+
+    </div>
+</div>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div id="flash-wrapper">
+      {% for category, message in messages %}
+        <div class="flash {{ category }}">{{ message }}</div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+{% if redirect_to_home %}
+<script>
+    setTimeout(() => {
+        window.location.href = "/dashboard";
+    }, 2000);
+</script>
+{% endif %}
+
+
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

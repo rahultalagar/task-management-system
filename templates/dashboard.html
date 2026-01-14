@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<!-- Flash messages -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div id="flash-wrapper">
+      {% for category, message in messages %}
+        <div class="flash {{ category }}">{{ message }}</div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+<!-- Navbar -->
+<div class="navbar">
+    <div class="logo">TaskManager</div>
+    <div class="menu">
+        <span class="welcome">Hi, {{ session.username }}</span>
+        <a href="/logout">Logout</a>
+    </div>
+</div>
+
+<!-- Dashboard Content -->
+<div class="dashboard-container">
+
+    <!-- Add Task Card -->
+    <div class="card dashboard-card">
+        <h2>Add New Task</h2>
+
+        <form method="POST" action="/add-task">
+            <input type="text" name="title" placeholder="Task Title" required>
+            <textarea name="description" placeholder="Task Description"></textarea>
+            <button type="submit" class="btn primary-btn">Add Task</button>
+        </form>
+    </div>
+
+    <!-- Task List Card -->
+    <div class="card dashboard-card">
+        <h2>Your Tasks</h2>
+
+        <!-- ================= PENDING TASKS ================= -->
+       <h3 style="margin-top:10px;color:#f39c12;">🟡 Pending Tasks</h3>
+
+        {% set pending_tasks = tasks | selectattr("status", "equalto", "Pending") | list %}
+        {% if pending_tasks %}
+            {% for task in pending_tasks %}
+            <div class="task-item">
+                <div class="task-content">
+                    <strong>{{ task.title }}</strong>
+                    <p>{{ task.description }}</p>
+                    <small>
+    <span class="status pending">Pending</span> |
+    Created: {{ task.created_at | format_datetime }}
+
+</small>
+
+                </div>
+
+                <div>
+                    <a href="/complete-task/{{ task.id }}" class="btn secondary-btn">
+                        Complete
+                    </a>
+                    <a href="/edit-task/{{ task.id }}" class="btn secondary-btn">
+                        Edit
+                    </a>
+                    <a href="/delete-task/{{ task.id }}" class="delete-btn"
+                       onclick="return confirm('Delete this task?');">
+                       Delete
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p class="empty-text">No pending tasks</p>
+        {% endif %}
+
+        <!-- ================= COMPLETED TASKS ================= -->
+        <h3 style="margin-top:30px;color:#28a745;">🟢 Completed Tasks</h3>
+
+
+        {% set completed_tasks = tasks | selectattr("status", "equalto", "Completed") | list %}
+        {% if completed_tasks %}
+            {% for task in completed_tasks %}
+            <div class="task-item" style="opacity:0.85;">
+                <div class="task-content">
+                    <strong>{{ task.title }}</strong>
+                    <p>{{ task.description }}</p>
+                 <small>
+    <span class="status completed">Completed</span> |
+   Completed: {{ task.completed_at | format_datetime }}
+
+</small>
+
+
+                </div>
+
+                <div>
+                    <a href="/delete-task/{{ task.id }}" class="delete-btn"
+                       onclick="return confirm('Delete this task?');">
+                       Delete
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p class="empty-text">No completed tasks</p>
+        {% endif %}
+
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

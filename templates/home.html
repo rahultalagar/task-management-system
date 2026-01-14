@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<!-- Flash messages -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div class="flash-container">
+      {% for category, message in messages %}
+        <div class="flash {{ category }}">{{ message }}</div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+<!-- Top Navigation -->
+<div class="navbar">
+    <div class="logo">TaskManager</div>
+    <div class="menu">
+        <a href="/">Home</a>
+        <a href="/login">Login</a>
+        <a href="/register">Sign Up</a>
+    </div>
+</div>
+
+<!-- Hero Section -->
+<div class="hero">
+    <h1>Personal Task Management System</h1>
+    <p>Plan, track, and manage your daily tasks efficiently</p>
+
+    <div class="button-group">
+        <a href="/login" class="btn primary-btn">Get Started</a>
+        <a href="/register" class="btn secondary-btn">Create Account</a>
+    </div>
+</div>
+
+<!-- Features Section -->
+<div class="features">
+    <div class="feature-card">
+        <h3>📝 Create Tasks</h3>
+        <p>Add and manage your daily tasks easily.</p>
+    </div>
+    <div class="feature-card">
+        <h3>🔒 Secure Access</h3>
+        <p>Your tasks are private and secure.</p>
+    </div>
+    <div class="feature-card">
+        <h3>⚡ Simple & Fast</h3>
+        <p>Clean design with easy navigation.</p>
+    </div>
+</div>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div id="flash-wrapper">
+      {% for category, message in messages %}
+        <div class="flash {{ category }}">{{ message }}</div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
